@@ -69,7 +69,7 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 8,
 			},
-			output: 4,
+			output: 5,
 			word: "Admit Student 3",
 		},
 		{
@@ -78,7 +78,7 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 9,
 			},
-			output: 4,
+			output: 6,
 			word: "Admit Student 4",
 		},
 		{
@@ -87,7 +87,7 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 10,
 			},
-			output: 4,
+			output: 7,
 			word: "Admit Student 5",
 		},
 		{
@@ -96,7 +96,7 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 11,
 			},
-			output: 4,
+			output: 8,
 			word: "Admit Student 6",
 		},
 		{
@@ -105,15 +105,15 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 13,
 			},
-			output: 4,
+			output: 9,
 			word: "Admit Student 7",
 		},
 	}
 
 	for _, applicant := range applicants {
 		t.Run(applicant.word, func(t *testing.T) {
-			result, err := principal.Admit(applicant.input, stud)
-			if result != applicant.output {
+			result, err, pid := principal.Admit(applicant.input, &stud)
+			if result != applicant.output && principal.ID != pid{
 				t.Errorf("%v\n", err)
 			}
 		})
