@@ -136,3 +136,37 @@ func TestPrincipal_Expel(t *testing.T) {
 		})
 	}
 }
+
+func TestPrincipal_Promote(t *testing.T) {
+	student := []struct {
+		input students.Student
+		output int
+		word string
+	} {
+		{
+			input: students.Student{ID: 2},
+			output: 6,
+			word: "Promote Student SS2 to SS3",
+		},
+		{
+			input: students.Student{ID: 3},
+			output: -1,
+			word: "Promote Non-Student",
+		},
+	}
+
+	//iPrincipal := IPrincipal(principal)
+	principal.ID =  int(time.Now().Unix())
+	principal.FirstName = "Mr Dada"
+	principal.LastName = "O"
+	principal.Position = school.PRINCIPAL
+
+	for _, stud := range student {
+		t.Run(stud.word, func(t *testing.T) {
+			class, _:= principal.Promote(stud.input)
+			if stud.output != class {
+				t.Errorf("Expected %v got %v", stud.output, class)
+			}
+		})
+	}
+}

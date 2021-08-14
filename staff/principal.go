@@ -64,7 +64,7 @@ func (p Principal) Promote(student s.Student) (int, int) {
 		school.Class[stud.Class]--
 		return stud.Class, p.ID
 	}
-	return student.Class, p.ID
+	return -1, p.ID
 }
 
 
