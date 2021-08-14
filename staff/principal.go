@@ -35,4 +35,8 @@ func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int
 	return id, nil, p.ID
 }
 
+func (p Principal) Expel(student s.Student) {
+
+}
+
 
