@@ -8,37 +8,21 @@ import (
 )
 
 //var stud = new(students.Student)
-var stud = map[int]students.Student{
-		1: {
-			FirstName: "Clin",
-			LastName:  "Ade",
-			Age:       15,
-			Class:     school.SSS1,
-		},
-		2: {
-			ID:        2,
-			FirstName: "Clint",
-			LastName:  "Ade",
-			Age:       15,
-			Class:     school.SSS2,
-		},
-		3: {
-			ID:        3,
-			FirstName: "Clinto",
-			LastName:  "Ade",
-			Age:       15,
-			Class:     school.SSS3,
-		},
-}
-
 var principal = new(Principal)
 
+//var principal = Principal{
+//	ID:  int(time.Now().Unix()),
+//	FirstName: "Mr Ojo",
+//	LastName: "O",
+//	Position: school.PRINCIPAL,
+//}
+
 func TestPrincipal_Admit(t *testing.T) {
-	principal.ID = int(time.Now().Unix())
+	//iPrincipal := IPrincipal(principal)
+	principal.ID =  int(time.Now().Unix())
 	principal.FirstName = "Mr Dada"
 	principal.LastName = "O"
 	principal.Position = school.PRINCIPAL
-
 	applicants := []struct{
 		input students.Student
 		output int
@@ -104,16 +88,50 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 13,
 			},
-			output: 10,
+			output: 9,
 			word: "Admit Student 7",
 		},
 	}
 
 	for _, applicant := range applicants {
 		t.Run(applicant.word, func(t *testing.T) {
-			result, err, pid := principal.Admit(applicant.input, stud)
-			if result != applicant.output && principal.ID != pid{
-				t.Errorf("%v\n", err)
+			result, _, _ := principal.Admit(applicant.input, school.Students)
+			if result != applicant.output{
+				t.Errorf("Expected %v, Got %v\n", applicant.output, result)
+			}
+		})
+	}
+}
+
+func TestPrincipal_Expel(t *testing.T) {
+	student := []struct {
+		input students.Student
+		output int
+		word string
+	} {
+		{
+			input: students.Student{ID: 3},
+			output: 8,
+			word: "Expel Student 3",
+		},
+		{
+			input: students.Student{ID: 20},
+			output: 8,
+			word: "Expel Student 3",
+		},
+	}
+
+	//iPrincipal := IPrincipal(principal)
+	principal.ID =  int(time.Now().Unix())
+	principal.FirstName = "Mr Dada"
+	principal.LastName = "O"
+	principal.Position = school.PRINCIPAL
+
+	for _, stud := range student {
+		t.Run(stud.word, func(t *testing.T) {
+			exist, total, _ := principal.Expel(stud.input)
+			if !exist && stud.output != total {
+				t.Errorf("Expected %v got %v", stud.output, total)
 			}
 		})
 	}
