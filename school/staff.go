@@ -1,4 +1,4 @@
-package staff
+package school
 
 type Profile struct {
 	ID string
