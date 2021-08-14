@@ -6,9 +6,21 @@ import (
 	s "github.com/Ad3bay0c/SchoolManagement/students"
 )
 
+//type IPrincipal interface {
+//	Admit(student s.Student, stud map[int]s.Student) (int, error, int)
+//	Expel(student s.Student) (bool, int, int)
+//}
+
 type Principal struct {
-	Profile
+	ID int
+	FirstName, LastName string
+	Position int
 }
+
+//PrincipalProfile.ID =  int(time.Now().Unix())
+//principal.FirstName = "Mr Dada"
+//principal.LastName = "O"
+//principal.Position = school.PRINCIPAL
 
 func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int,err error, pid int) {
 	switch {
@@ -38,10 +50,11 @@ func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int
 func (p Principal) Expel(student s.Student) (bool, int, int) {
 	if stud, exist := school.Students[student.ID]; exist {
 		delete(school.Students, stud.ID)
-		return true, stud.ID, p.ID
+		school.Class[stud.Class]--
+		return true, len(school.Students), p.ID
 	}
 
-	return false, -1, p.ID
+	return false, len(school.Students), p.ID
 }
 
 
