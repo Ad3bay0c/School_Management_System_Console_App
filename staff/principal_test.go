@@ -111,9 +111,9 @@ func TestPrincipal_Admit(t *testing.T) {
 
 	for _, applicant := range applicants {
 		t.Run(applicant.word, func(t *testing.T) {
-			result, err, pid := principal.Admit(applicant.input, &stud)
+			result, err, pid := principal.Admit(applicant.input, stud)
 			if result != applicant.output && principal.ID != pid{
-				t.Errorf("%v %v\n", err)
+				t.Errorf("%v\n", err)
 			}
 		})
 	}
