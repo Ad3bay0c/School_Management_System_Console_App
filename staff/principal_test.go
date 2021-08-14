@@ -8,7 +8,7 @@ import (
 )
 
 //var stud = new(students.Student)
-var s = []students.Student{
+var stud = []students.Student{
 	{
 		ID: 1,
 		FirstName: "Clin",
@@ -49,7 +49,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			input: students.Student{
 				FirstName: "Bamidele",
 				LastName: "Johnson",
-				Age: 10,
+				Age: 12,
 			},
 			output: 4,
 			word: "Admit Student 1",
@@ -60,14 +60,59 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 0,
 			},
-			output: 5,
+			output: 0,
 			word: "Admit Student 2",
+		},
+		{
+			input: students.Student{
+				FirstName: "Bami",
+				LastName: "John",
+				Age: 8,
+			},
+			output: 4,
+			word: "Admit Student 3",
+		},
+		{
+			input: students.Student{
+				FirstName: "Bami",
+				LastName: "John",
+				Age: 9,
+			},
+			output: 4,
+			word: "Admit Student 4",
+		},
+		{
+			input: students.Student{
+				FirstName: "Bami",
+				LastName: "John",
+				Age: 10,
+			},
+			output: 4,
+			word: "Admit Student 5",
+		},
+		{
+			input: students.Student{
+				FirstName: "Bami",
+				LastName: "John",
+				Age: 11,
+			},
+			output: 4,
+			word: "Admit Student 6",
+		},
+		{
+			input: students.Student{
+				FirstName: "Bami",
+				LastName: "John",
+				Age: 13,
+			},
+			output: 4,
+			word: "Admit Student 7",
 		},
 	}
 
 	for _, applicant := range applicants {
 		t.Run(applicant.word, func(t *testing.T) {
-			result, err := principal.Admit(applicant.input, s)
+			result, err := principal.Admit(applicant.input, stud)
 			if result != applicant.output {
 				t.Errorf("%v\n", err)
 			}
