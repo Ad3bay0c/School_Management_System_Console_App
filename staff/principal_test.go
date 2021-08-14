@@ -8,28 +8,27 @@ import (
 )
 
 //var stud = new(students.Student)
-var stud = []students.Student{
-	{
-		ID: 1,
-		FirstName: "Clin",
-		LastName: "Ade",
-		Age: 15,
-		Class: school.SSS1,
-	},
-	{
-		ID: 2,
-		FirstName: "Clin",
-		LastName: "Ade",
-		Age: 15,
-		Class: school.SSS2,
-	},
-	{
-		ID: 3,
-		FirstName: "Clin",
-		LastName: "Ade",
-		Age: 15,
-		Class: school.SSS3,
-	},
+var stud = map[int]students.Student{
+		1: {
+			FirstName: "Clin",
+			LastName:  "Ade",
+			Age:       15,
+			Class:     school.SSS1,
+		},
+		2: {
+			ID:        2,
+			FirstName: "Clint",
+			LastName:  "Ade",
+			Age:       15,
+			Class:     school.SSS2,
+		},
+		3: {
+			ID:        3,
+			FirstName: "Clinto",
+			LastName:  "Ade",
+			Age:       15,
+			Class:     school.SSS3,
+		},
 }
 
 var principal = new(Principal)
@@ -105,7 +104,7 @@ func TestPrincipal_Admit(t *testing.T) {
 				LastName: "John",
 				Age: 13,
 			},
-			output: 9,
+			output: 10,
 			word: "Admit Student 7",
 		},
 	}
@@ -114,7 +113,7 @@ func TestPrincipal_Admit(t *testing.T) {
 		t.Run(applicant.word, func(t *testing.T) {
 			result, err, pid := principal.Admit(applicant.input, &stud)
 			if result != applicant.output && principal.ID != pid{
-				t.Errorf("%v\n", err)
+				t.Errorf("%v %v\n", err)
 			}
 		})
 	}
