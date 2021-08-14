@@ -27,7 +27,7 @@ func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int
 	default:
 		return 0, errors.New("age too low for Admission to Our School"), p.ID
 	}
-	//student.ID = len(students) + 1
+	student.ID = len(students) + 1
 	id := len(students) + 1
 	school.Class[student.Class]++
 	students[id] = student
@@ -35,8 +35,13 @@ func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int
 	return id, nil, p.ID
 }
 
-func (p Principal) Expel(student s.Student) {
+func (p Principal) Expel(student s.Student) (bool, int, int) {
+	if stud, exist := school.Students[student.ID]; exist {
+		delete(school.Students, stud.ID)
+		return true, stud.ID, p.ID
+	}
 
+	return false, -1, p.ID
 }
 
 
