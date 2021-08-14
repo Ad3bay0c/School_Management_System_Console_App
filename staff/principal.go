@@ -57,4 +57,14 @@ func (p Principal) Expel(student s.Student) (bool, int, int) {
 	return false, len(school.Students), p.ID
 }
 
+func (p Principal) Promote(student s.Student) (int, int) {
+	if stud, exist := school.Students[student.ID]; exist {
+		school.Class[stud.Class]--
+		stud.Class++
+		school.Class[stud.Class]--
+		return stud.Class, p.ID
+	}
+	return student.Class, p.ID
+}
+
 
