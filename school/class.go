@@ -10,7 +10,7 @@ const (
 	SSS3
 )
 
-var class = map[int]int {
+var Class = map[int]int {
 	JSS1: 10,
 	JSS2: 10,
 	JSS3: 10,
