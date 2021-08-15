@@ -6,5 +6,5 @@ const (
 )
 
 type Promotional interface {
-	Promote()
+	Promote(s Student) (int, int)
 }
