@@ -22,6 +22,7 @@ func TestTeacher_GradeStudent(t *testing.T) {
 		FirstName: "Mr Ojo",
 		LastName:  "L",
 		Role:      school.TEACHER,
+		Subjects: []string{"Yoruba", "Physics", "Biology"},
 	}
 	for _, student := range students {
 		t.Run(student.word, func(t *testing.T) {
