@@ -3,6 +3,7 @@ package school
 const (
 	PRINCIPAL = iota
 	TEACHER
+	BURSARY
 )
 
 type Promotional interface {
