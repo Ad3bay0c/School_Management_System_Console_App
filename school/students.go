@@ -6,6 +6,7 @@ type Student struct {
 	Age 				int
 	Class				int
 	Subject				[]string
+	Grade				map[string]string
 }
 
 var Subject  = map[int][]string{
