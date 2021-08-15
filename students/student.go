@@ -36,9 +36,13 @@ var Students = map[int]Student{
 
 func (s Student) TakeCourse() bool {
 	s.Subject = school.Subject[s.Class]
-	//if s.Subject[1] != "" {
-	//	return true
-	//}
+
 	return true
+}
+
+func (s Student) CheckGrade() map[string]string {
+	result := school.Students[s.ID].Grade
+
+	return result
 }
 
