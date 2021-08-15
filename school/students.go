@@ -2,6 +2,15 @@ package school
 
 import "github.com/Ad3bay0c/SchoolManagement/students"
 
+var Subject  = map[int][]string{
+	JSS1: { "English", "Int. Science", "Intro-Tech"},
+	JSS2: { "English", "Int. Science", "Intro-Tech"},
+	SSS1: { "Chemistry", "Biology", "Physics"},
+	SSS2: { "Chemistry", "Biology", "Physics"},
+	SSS3: { "Chemistry", "Biology", "Physics"},
+}
+
+
 var Students = map[int]students.Student{
 	1: {
 		ID: 1,
@@ -25,3 +34,5 @@ var Students = map[int]students.Student{
 		Class:     SSS3,
 	},
 }
+
+
