@@ -14,13 +14,13 @@ import (
 type Principal struct {
 	ID int
 	FirstName, LastName string
-	Position int
+	Role                int
 }
 
 //PrincipalProfile.ID =  int(time.Now().Unix())
 //principal.FirstName = "Mr Dada"
 //principal.LastName = "O"
-//principal.Position = school.PRINCIPAL
+//principal.Role = school.PRINCIPAL
 
 func (p Principal) Admit(applicant s.Applicant, students map[int]school.Student) (sid int,err error, pid int) {
 	student := school.Student{

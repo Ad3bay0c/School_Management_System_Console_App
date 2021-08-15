@@ -14,7 +14,7 @@ var principal = new(Principal)
 //	ID:  int(time.Now().Unix()),
 //	FirstName: "Mr Ojo",
 //	LastName: "O",
-//	Position: school.PRINCIPAL,
+//	Role: school.PRINCIPAL,
 //}
 
 func TestPrincipal_Admit(t *testing.T) {
@@ -22,7 +22,7 @@ func TestPrincipal_Admit(t *testing.T) {
 	principal.ID =  int(time.Now().Unix())
 	principal.FirstName = "Mr Dada"
 	principal.LastName = "O"
-	principal.Position = school.PRINCIPAL
+	principal.Role = school.PRINCIPAL
 	applicants := []struct{
 		input students.Applicant
 		output int
@@ -125,7 +125,7 @@ func TestPrincipal_Expel(t *testing.T) {
 	principal.ID =  int(time.Now().Unix())
 	principal.FirstName = "Mr Dada"
 	principal.LastName = "O"
-	principal.Position = school.PRINCIPAL
+	principal.Role = school.PRINCIPAL
 
 	for _, stud := range student {
 		t.Run(stud.word, func(t *testing.T) {
@@ -163,7 +163,7 @@ func TestPrincipal_Promote(t *testing.T) {
 	principal.ID =  int(time.Now().Unix())
 	principal.FirstName = "Mr Dada"
 	principal.LastName = "O"
-	principal.Position = school.PRINCIPAL
+	principal.Role = school.PRINCIPAL
 
 	for _, stud := range student {
 		t.Run(stud.word, func(t *testing.T) {
