@@ -1,6 +1,12 @@
 package school
 
-import "github.com/Ad3bay0c/SchoolManagement/students"
+type Student struct {
+	ID 					int
+	FirstName, LastName string
+	Age 				int
+	Class				int
+	Subject				[]string
+}
 
 var Subject  = map[int][]string{
 	JSS1: { "English", "Int. Science", "Intro-Tech"},
@@ -11,13 +17,13 @@ var Subject  = map[int][]string{
 }
 
 
-var Students = map[int]students.Student{
+var Students = map[int]Student{
 	1: {
 		ID: 1,
 		FirstName: "Clin",
 		LastName:  "Ade",
 		Age:       15,
-		Class:     SSS1,
+		Class:     SSS3,
 	},
 	2: {
 		ID:        2,
@@ -34,5 +40,7 @@ var Students = map[int]students.Student{
 		Class:     SSS3,
 	},
 }
+
+var Alumni = 10
 
 
