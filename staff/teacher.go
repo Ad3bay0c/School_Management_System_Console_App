@@ -14,4 +14,5 @@ func (teacher Teacher) GradeStudent(student *school.Student) {
 		"Mathematics" : "B",
 		"Chemistry" : "A1",
 	}
+	school.Students[student.ID] = *student
 }
