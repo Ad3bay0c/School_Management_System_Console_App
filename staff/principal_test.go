@@ -165,6 +165,8 @@ func TestPrincipal_Promote(t *testing.T) {
 	principal.LastName = "O"
 	principal.Role = school.PRINCIPAL
 
+	//var i school.Promotional
+	//i = principal
 	for _, stud := range student {
 		t.Run(stud.word, func(t *testing.T) {
 			class, _:= principal.Promote(stud.input)
