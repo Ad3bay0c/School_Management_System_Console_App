@@ -8,8 +8,9 @@ type Applicant struct {
 	Age 				int
 }
 
+// CheckStatus 'applicant to check Admission Status'
 func(applicant Applicant) CheckStatus() bool {
-	_, err := school.Students[applicant.ID]
+	_, err := school.Students[applicant.ID] // if present in list of students
 
 	return err
 }
