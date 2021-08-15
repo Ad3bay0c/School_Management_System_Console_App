@@ -22,19 +22,24 @@ type Principal struct {
 //principal.LastName = "O"
 //principal.Position = school.PRINCIPAL
 
-func (p Principal) Admit(student s.Student, students map[int]s.Student) (sid int,err error, pid int) {
+func (p Principal) Admit(applicant s.Applicant, students map[int]s.Student) (sid int,err error, pid int) {
+	student := s.Student{
+		FirstName: applicant.FirstName,
+		LastName: applicant.LastName,
+		Age: applicant.Age,
+	}
 	switch {
-	case student.Age > 6 && student.Age <= 8:
+	case applicant.Age > 6 && applicant.Age <= 8:
 		student.Class = school.JSS1
-	case student.Age > 8 && student.Age <= 9:
+	case applicant.Age > 8 && applicant.Age <= 9:
 		student.Class = school.JSS2
-	case student.Age > 9 && student.Age <= 10:
+	case applicant.Age > 9 && applicant.Age <= 10:
 		student.Class = school.JSS3
-	case student.Age > 10 && student.Age <= 12:
+	case applicant.Age > 10 && applicant.Age <= 12:
 		student.Class = school.SSS1
-	case student.Age > 12 && student.Age <= 14:
+	case applicant.Age > 12 && applicant.Age <= 14:
 		student.Class = school.SSS2
-	case student.Age > 14:
+	case applicant.Age > 14:
 		student.Class = school.SSS3
 	default:
 		return 0, errors.New("age too low for Admission to Our School"), p.ID
