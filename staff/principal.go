@@ -22,8 +22,8 @@ type Principal struct {
 //principal.LastName = "O"
 //principal.Position = school.PRINCIPAL
 
-func (p Principal) Admit(applicant s.Applicant, students map[int]s.Student) (sid int,err error, pid int) {
-	student := s.Student{
+func (p Principal) Admit(applicant s.Applicant, students map[int]school.Student) (sid int,err error, pid int) {
+	student := school.Student{
 		FirstName: applicant.FirstName,
 		LastName: applicant.LastName,
 		Age: applicant.Age,
@@ -65,8 +65,11 @@ func (p Principal) Expel(student s.Student) (bool, int, int) {
 func (p Principal) Promote(student s.Student) (int, int) {
 	if stud, exist := school.Students[student.ID]; exist {
 		school.Class[stud.Class]--
-		stud.Class++
-		school.Class[stud.Class]--
+		if stud.Class == 6 {
+			school.Alumni++
+		} else {
+			stud.Class++
+		}
 		return stud.Class, p.ID
 	}
 	return -1, p.ID

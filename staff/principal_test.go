@@ -24,12 +24,12 @@ func TestPrincipal_Admit(t *testing.T) {
 	principal.LastName = "O"
 	principal.Position = school.PRINCIPAL
 	applicants := []struct{
-		input students.Student
+		input students.Applicant
 		output int
 		word string
 	} {
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bamidele",
 				LastName: "Johnson",
 				Age: 12,
@@ -38,7 +38,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 1",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 0,
@@ -47,7 +47,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 2",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 8,
@@ -56,7 +56,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 3",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 9,
@@ -65,7 +65,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 4",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 10,
@@ -74,7 +74,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 5",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 11,
@@ -83,7 +83,7 @@ func TestPrincipal_Admit(t *testing.T) {
 			word: "Admit Student 6",
 		},
 		{
-			input: students.Student{
+			input: students.Applicant{
 				FirstName: "Bami",
 				LastName: "John",
 				Age: 13,
@@ -153,8 +153,12 @@ func TestPrincipal_Promote(t *testing.T) {
 			output: -1,
 			word: "Promote Non-Student",
 		},
+		{
+			input: students.Student{ID: 1},
+			output: 6,
+			word: "Promote Student SS3 to Alumnus",
+		},
 	}
-
 	//iPrincipal := IPrincipal(principal)
 	principal.ID =  int(time.Now().Unix())
 	principal.FirstName = "Mr Dada"
