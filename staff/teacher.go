@@ -33,3 +33,7 @@ func (teacher Teacher) Promote(student s.Student) (int, int) {
 	}
 	return -1, teacher.ID
 }
+
+func (teacher Teacher) CheckStudentList() map[int]school.Student {
+	return school.Students
+}

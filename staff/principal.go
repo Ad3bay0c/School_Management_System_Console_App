@@ -75,4 +75,8 @@ func (p Principal) Promote(student s.Student) (int, int) {
 	return -1, p.ID
 }
 
+func (p Principal) CheckStudentList() map[int]school.Student {
+	return school.Students
+}
+
 
