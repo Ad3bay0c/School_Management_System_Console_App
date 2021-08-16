@@ -176,3 +176,30 @@ func TestPrincipal_Promote(t *testing.T) {
 		})
 	}
 }
+
+func TestPrincipal_CheckStudentList(t *testing.T) {
+	tables := []struct {
+		input	school.Promotional
+		output	int
+		word	string
+	} {
+		{
+			input: Teacher{ID: 1},
+			output: 8,
+			word: "Teacher Interface",
+		},
+		{
+			input: Principal{ID: 1},
+			output: 8,
+			word: "Principal Interface",
+		},
+	}
+	for _, table := range tables {
+		t.Run(table.word, func(t *testing.T) {
+			result := table.input.CheckStudentList()
+			if table.output != len(result) {
+				t.Errorf("Expected %v, Got %v", table.output, len(result))
+			}
+		})
+	}
+}
