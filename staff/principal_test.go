@@ -95,7 +95,7 @@ func TestPrincipal_Admit(t *testing.T) {
 
 	for _, applicant := range applicants {
 		t.Run(applicant.word, func(t *testing.T) {
-			result, _, _ := principal.Admit(applicant.input, school.Students)
+			result, _, _ := principal.Admit(applicant.input)
 			if result != applicant.output{
 				t.Errorf("Expected %v, Got %v\n", applicant.output, result)
 			}
