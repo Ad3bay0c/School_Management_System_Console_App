@@ -22,7 +22,7 @@ type Principal struct {
 //principal.LastName = "O"
 //principal.Role = school.PRINCIPAL
 
-func (p Principal) Admit(applicant s.Applicant, students map[int]school.Student) (sid int,err error, pid int) {
+func (p Principal) Admit(applicant s.Applicant) (sid int,err error, pid int) {
 	student := school.Student{
 		FirstName: applicant.FirstName,
 		LastName: applicant.LastName,
@@ -44,10 +44,10 @@ func (p Principal) Admit(applicant s.Applicant, students map[int]school.Student)
 	default:
 		return 0, errors.New("age too low for Admission to Our School"), p.ID
 	}
-	student.ID = len(students) + 1
-	id := len(students) + 1
+	student.ID = len(school.Students) + 1
+	id := len(school.Students) + 1
 	school.Class[student.Class]++
-	students[id] = student
+	school.Students[id] = student
 
 	return id, nil, p.ID
 }
