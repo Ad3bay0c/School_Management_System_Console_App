@@ -9,14 +9,6 @@ type Student struct {
 	Grade				map[string]string
 }
 
-var Subject  = map[int][]string{
-	JSS1: { "English", "Int. Science", "Intro-Tech"},
-	JSS2: { "English", "Int. Science", "Intro-Tech"},
-	SSS1: { "Chemistry", "Biology", "Physics"},
-	SSS2: { "Chemistry", "Biology", "Physics"},
-	SSS3: { "Chemistry", "Biology", "Physics"},
-}
-
 
 var Students = map[int]Student{
 	1: {
