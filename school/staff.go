@@ -6,6 +6,5 @@ const (
 )
 
 type Promotional interface {
-	Promote(s Student) (int, int)
 	CheckStudentList() map[int]Student
 }
