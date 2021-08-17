@@ -5,6 +5,6 @@ const (
 	TEACHER
 )
 
-type Promotional interface {
+type StudentLists interface {
 	CheckStudentList() map[int]Student
 }
