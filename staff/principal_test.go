@@ -165,7 +165,7 @@ func TestPrincipal_Promote(t *testing.T) {
 	principal.LastName = "O"
 	principal.Role = school.PRINCIPAL
 
-	//var i school.Promotional
+	//var i school.StudentLists
 	//i = principal
 	for _, stud := range student {
 		t.Run(stud.word, func(t *testing.T) {
@@ -179,7 +179,7 @@ func TestPrincipal_Promote(t *testing.T) {
 
 func TestPrincipal_CheckStudentList(t *testing.T) {
 	tables := []struct {
-		input	school.Promotional
+		input	school.StudentLists
 		output	int
 		word	string
 	} {

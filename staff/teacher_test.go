@@ -66,7 +66,7 @@ func TestTeacher_Promote(t *testing.T) {
 	teacher.LastName = "O"
 	teacher.Role = school.TEACHER
 
-	//var i school.Promotional
+	//var i school.StudentLists
 	//i = principal
 	for _, stud := range student {
 		t.Run(stud.word, func(t *testing.T) {
